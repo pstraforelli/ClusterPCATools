@@ -1,0 +1,19 @@
+Package: Cluster_PCA_tools
+Title: Collection of Tools for Cluster and PCA
+Version: 0.0.1
+Authors@R: 
+    person("Phil", "Straforelli", , "phil.straforelli@environics.ca", role = c("aut", "cre"),
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: This package collects helper functions for steps I have come to like taking when running cluster analysis or principal components analysis.
+License: GPL (>= 3)
+Depends: R (>= 4.1.0)
+Imports:
+    dplyr,
+    factoextra,
+    ggplot2,
+    ggforce,
+    psych,
+    rlang
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
