@@ -13,8 +13,10 @@ Imports:
     factoextra,
     ggplot2,
     ggforce,
+    plotly,
     psych,
     rlang,
+    tibble,
     tidyr
 Encoding: UTF-8
 LazyData: true
