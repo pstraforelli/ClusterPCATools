@@ -1,6 +1,6 @@
 Package: ClusterPCATools
 Title: Collection of Tools for Cluster and PCA
-Version: 0.0.1
+Version: 0.1
 Authors@R: 
     person("Phil", "Straforelli", , "phil.straforelli@environics.ca", 
     role = c("aut", "cre"), comment = c(ORCID = "YOUR-ORCID-ID"))
@@ -13,7 +13,9 @@ Imports:
     factoextra,
     ggplot2,
     ggforce,
+    openxlsx,
     plotly,
+    purrr,
     psych,
     rlang,
     tibble,
