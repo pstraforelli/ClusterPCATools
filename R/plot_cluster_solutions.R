@@ -37,5 +37,6 @@ plot_cluster_solutions <- function(data, ...) {
     geom_parallel_sets_axes(axis.width = 0.1) +
     geom_parallel_sets_labels(colour = 'white') +
     theme_void() +
-    theme(legend.position = "none")
+    theme(legend.position = "none",
+          plot.background = element_rect(fill = "white"))
 }
