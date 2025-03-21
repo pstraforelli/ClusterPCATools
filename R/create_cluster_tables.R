@@ -34,7 +34,8 @@ create_cluster_tables <- function(data, seg, labels, ...) {
       mutate(perc = n / sum(n), .by = {{ seg }}) |>
       select(-n) |>
       mutate({{ seg }} := paste("Segment", {{ seg }})) |>
-      pivot_wider(names_from = {{ seg }}, values_from = perc)
+      pivot_wider(names_from = {{ seg }}, values_from = perc) |>
+      arrange(desc(!! x))
   })
 
   start_rows <- cumsum(c(2, map_int(tables, function(x) nrow(x) + 3)))
