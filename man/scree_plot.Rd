@@ -4,10 +4,12 @@
 \alias{scree_plot}
 \title{Scree plot}
 \usage{
-scree_plot(data, ...)
+scree_plot(data, w = NULL, ...)
 }
 \arguments{
 \item{data}{A data frame}
+
+\item{w}{The name of a weighting variable. Defaults to 1 if not given.}
 
 \item{...}{variables to run PCA on. tidyselect methods can be used.}
 }

@@ -5,8 +5,10 @@
 #'
 #' @param data A data frame with only the variables to run the PCA on.
 #' @param nfactors The number of factors desired.
+#' @param w The name of a weighting variable. Defaults to 1 if not given.
 #' @param labels_df A data frame that lists the variable names in a "name"
 #'   variable and the labels of the those variable in a "label" variable.
+#' @param ... variables to run PCA on. tidyselect methods can be used.
 #'
 #' @import dplyr
 #' @importFrom psych principal
@@ -23,13 +25,22 @@
 #'   label = gsub("([[:lower:]][[:lower:]])([[:upper:]])", "\\1 \\2", names(data)))
 #'
 #' suppressWarnings(
-#'   create_final_pca(data = data, nfactors = 4, labels_df = labels_df)
+#'   create_final_pca(data = data, nfactors = 4, labels_df = labels_df, everything())
 #'   )
 
-create_final_pca <- function(data, nfactors, labels_df) {
+create_final_pca <- function(data, nfactors, w = NULL, labels_df, ...) {
+  vars <- enquos(...)
+  w <- enquo(w)
+
+  if (!quo_is_null(w)) {
+    weights <- pull(data, {{w}})
+  }
+
+  data <- select(data, !!! vars)
+
   pca <- data |>
     mutate(across(everything(), ~ c(scale(.x)))) |>
-    principal(nfactors = nfactors)
+    principal(nfactors = nfactors, weight = weights)
 
   loadings <- pca$loadings |>
     unclass() |>
