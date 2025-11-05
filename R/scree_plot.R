@@ -30,7 +30,7 @@ scree_plot <- function(data, w = NULL, ...) {
   data |>
     select(!!! vars) |>
     mutate(across(everything(), ~ c(scale(.x)))) |>
-    PCA(row.w = weights) |>
+    PCA(row.w = weights, graph = FALSE) |>
     get_eigenvalue() |>
     as_tibble() |>
     mutate(dims = row_number()) |>
