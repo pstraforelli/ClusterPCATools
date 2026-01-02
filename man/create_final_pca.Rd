@@ -4,19 +4,19 @@
 \alias{create_final_pca}
 \title{Finalized Principal Components Table}
 \usage{
-create_final_pca(data, nfactors, w = NULL, labels_df, ...)
+create_final_pca(data, nfactors, labels_df, ..., w = NULL)
 }
 \arguments{
 \item{data}{A data frame with only the variables to run the PCA on.}
 
 \item{nfactors}{The number of factors desired.}
 
-\item{w}{The name of a weighting variable. Defaults to 1 if not given.}
-
 \item{labels_df}{A data frame that lists the variable names in a "name"
 variable and the labels of the those variable in a "label" variable.}
 
 \item{...}{variables to run PCA on. tidyselect methods can be used.}
+
+\item{w}{The name of a weighting variable. Defaults to 1 if not given.}
 }
 \value{
 A data frame with the variables ordered by their corresponding factors

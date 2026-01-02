@@ -19,11 +19,13 @@
 #'
 #' scree_plot(iris, -Species)
 
-scree_plot <- function(data, w = NULL, ...) {
+scree_plot <- function(data, ..., w = NULL) {
   vars <- enquos(...)
   w <- enquo(w)
 
-  if (!quo_is_null(w)) {
+  if (quo_is_null(w)) {
+    weights <- rep(1, nrow(data))
+  } else {
     weights <- pull(data, {{w}})
   }
 

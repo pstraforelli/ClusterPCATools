@@ -28,11 +28,13 @@
 #'   create_final_pca(data = data, nfactors = 4, labels_df = labels_df, everything())
 #'   )
 
-create_final_pca <- function(data, nfactors, w = NULL, labels_df, ...) {
+create_final_pca <- function(data, nfactors, labels_df, ..., w = NULL) {
   vars <- enquos(...)
   w <- enquo(w)
 
-  if (!quo_is_null(w)) {
+  if (quo_is_null(w)) {
+    weights <- rep(1, nrow(data))
+  } else {
     weights <- pull(data, {{w}})
   }
 
