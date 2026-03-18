@@ -46,13 +46,14 @@ create_cluster_plot <- function(data, seg, ThreeD = FALSE) {
       add_text(x = centroids[["RC1"]], y = centroids[["RC2"]], z = centroids[["RC3"]], text = centroids[["seg"]])
   } else {
     plot <- ggplot() +
-      geom_point(data = scores, aes(x = RC1, y = RC2, colour = seg), show.legend = FALSE) +
-      geom_label(data = centroids, aes(x = RC1, y = RC2, label = seg, colour = seg), show.legend = FALSE) +
       geom_hline(yintercept = mean(scores[["RC2"]])) +
       geom_vline(xintercept = mean(scores[["RC1"]])) +
+      geom_point(data = scores, aes(x = RC1, y = RC2, colour = seg), show.legend = FALSE) +
+      geom_label(data = centroids, aes(x = RC1, y = RC2, label = seg, colour = seg), show.legend = FALSE) +
       theme(axis.ticks = element_blank(),
             panel.grid = element_blank(),
-            panel.background = element_blank())
+            panel.background = element_blank(),
+            axis.text = element_blank())
   }
 
   plot
